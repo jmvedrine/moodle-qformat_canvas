@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <assessment ident="ica9f38545873471cce05a558275d3f66" title="Lesson Quiz - Infinitives">
+    <qtimetadata>
+      <qtimetadatafield>
+        <fieldlabel>cc_maxattempts</fieldlabel>
+        <fieldentry>1</fieldentry>
+      </qtimetadatafield>
+    </qtimetadata>
+    <section ident="root_section">
+      <item ident="ib72d375eb3ae0be7cd550df36ec80fa1" title="Question">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>question_type</fieldlabel>
+              <fieldentry>matching_question</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>points_possible</fieldlabel>
+              <fieldentry>1</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>assessment_question_identifierref</fieldlabel>
+              <fieldentry>i470574075039f27be6df6859393028db</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;&lt;p&gt;&lt;span&gt;Note the infinitive phrase.&#160; Tell its function.&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;</mattext>
+          </material>
+          <response_lid ident="response_3514">
+            <material>
+              <mattext texttype="text/plain">Beloved, if God so loved us, we also ought TO LOVE ONE ANOTHER</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="6632">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="962">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2630">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="6197">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1981">
+                <material>
+                  <mattext>adjectival</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9695">
+                <material>
+                  <mattext>adjectival</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8697">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4153">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9679">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_2871">
+            <material>
+              <mattext texttype="text/plain">Every evil of theirs is in Gilgal; there I began TO HATE THEM. Because of the wickedness of their deeds I will drive them out of my house.</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="6632">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="962">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2630">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="6197">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1981">
+                <material>
+                  <mattext>adjectival</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9695">
+                <material>
+                  <mattext>adjectival</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8697">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4153">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9679">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_4465">
+            <material>
+              <mattext texttype="text/plain">When the Jews who were with her in the house, consoling her, saw Mary rise quickly and go out, they followed her, supposing that she was going to the tomb TO WEEP THERE</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="6632">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="962">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2630">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="6197">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1981">
+                <material>
+                  <mattext>adjectival</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9695">
+                <material>
+                  <mattext>adjectival</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8697">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4153">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9679">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_6842">
+            <material>
+              <mattext texttype="text/plain">Now the lords of the Philistines gathered TO OFFER A GREAT SACRIFICE TO DAGON THEIR GOD and to rejoice, and they said, &#8220;Our god has given Samson our enemy into our hand.&#8221;</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="6632">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="962">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2630">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="6197">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1981">
+                <material>
+                  <mattext>adjectival</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9695">
+                <material>
+                  <mattext>adjectival</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8697">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4153">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9679">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_5616">
+            <material>
+              <mattext texttype="text/plain">For everything there is a season, and a time for every matter under heaven: a time TO BE BORN, and a time to die; a time to plant, and a time to pluck up what is planted;</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="6632">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="962">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2630">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="6197">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1981">
+                <material>
+                  <mattext>adjectival</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9695">
+                <material>
+                  <mattext>adjectival</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8697">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4153">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9679">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_228">
+            <material>
+              <mattext texttype="text/plain">But to all who did receive Him, who believed in His name, he gave the right TO BECOME CHILDREN OF GOD...</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="6632">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="962">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2630">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="6197">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1981">
+                <material>
+                  <mattext>adjectival</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9695">
+                <material>
+                  <mattext>adjectival</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8697">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4153">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9679">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_2929">
+            <material>
+              <mattext texttype="text/plain">then hear the word of the LORD, O remnant of Judah. Thus says the LORD of hosts, the God of Israel: If you set your faces TO ENTER EGYPT and go to live there,</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="6632">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="962">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2630">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="6197">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1981">
+                <material>
+                  <mattext>adjectival</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9695">
+                <material>
+                  <mattext>adjectival</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8697">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4153">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9679">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_3977">
+            <material>
+              <mattext texttype="text/plain">How then will they call on him in whom they have not believed? And how are they TO BELIEVE IN HIM of whom they have never heard?</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="6632">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="962">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2630">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="6197">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1981">
+                <material>
+                  <mattext>adjectival</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9695">
+                <material>
+                  <mattext>adjectival</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8697">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4153">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9679">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+          <response_lid ident="response_7088">
+            <material>
+              <mattext texttype="text/plain">After this Absalom got himself a chariot and horses, and fifty men TO RUN BEFORE HIM.</mattext>
+            </material>
+            <render_choice>
+              <response_label ident="6632">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="962">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="2630">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="6197">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="1981">
+                <material>
+                  <mattext>adjectival</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9695">
+                <material>
+                  <mattext>adjectival</mattext>
+                </material>
+              </response_label>
+              <response_label ident="8697">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+              <response_label ident="4153">
+                <material>
+                  <mattext>substantive</mattext>
+                </material>
+              </response_label>
+              <response_label ident="9679">
+                <material>
+                  <mattext>adverbial</mattext>
+                </material>
+              </response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_3514">6632</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">11.11</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_2871">962</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">11.11</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_4465">2630</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">11.11</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_6842">6197</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">11.11</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_5616">1981</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">11.11</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_228">9695</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">11.11</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_2929">8697</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">11.11</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_3977">4153</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">11.11</setvar>
+          </respcondition>
+          <respcondition>
+            <conditionvar>
+              <varequal respident="response_7088">9679</varequal>
+            </conditionvar>
+            <setvar varname="SCORE" action="Add">11.11</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+    </section>
+  </assessment>
+</questestinterop>
