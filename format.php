@@ -105,10 +105,10 @@ class qformat_canvas extends qformat_based_on_xml {
                 case 'text_only_question':
                     $this->process_description($rawquestion, $questions);
                     break;
+                case 'calculated_question':
+                    $this->process_calculated($rawquestion, $questions);
                 default:
-                    echo "Question skipped: ". $rawquestion->qtype . "<br/>";
-                    // TODO: uncomment when more question types are imported.
-                    // $this->error(get_string('unknownorunhandledtype', 'question', $rawquestion->qtype));
+                    $this->error(get_string('unknownorunhandledtype', 'question', $rawquestion->qtype));
                     break;
             }
         }
@@ -156,7 +156,7 @@ class qformat_canvas extends qformat_based_on_xml {
                     break;
                 case 'fill_in_multiple_blanks_question':
                 case 'multiple_dropdowns_question':
-                    $parts= $this->getpath($pblock,
+                    $parts = $this->getpath($pblock,
                             array('#', 'response_lid'),
                             array(), false);
                     $rawparts = array();
@@ -214,7 +214,7 @@ class qformat_canvas extends qformat_based_on_xml {
             $responses = array();
             if ($rawquestion->qtype == 'matching_question') {
                 $this->process_matching_responses($respconditions, $responses);
-            } else if ($rawquestion->qtype =='numerical_question') {
+            } else if ($rawquestion->qtype == 'numerical_question') {
                 $this->process_num_responses($respconditions, $responses);
             } else {
                 $this->process_responses($respconditions, $responses);
@@ -998,7 +998,7 @@ class qformat_canvas extends qformat_based_on_xml {
         foreach ($choices as $cid => $choice) {
             // I think that for fill_in_multiple_blanks_question all answers are
             // correct despite what the XML file says.
-            if (in_array($cid, $correctanswer) || $subqtype =='fill_in_multiple_blanks_question') {
+            if (in_array($cid, $correctanswer) || $subqtype == 'fill_in_multiple_blanks_question') {
                 $prefix = '%100%';
             } else {
                 $prefix = '';
@@ -1067,23 +1067,28 @@ class qformat_canvas extends qformat_based_on_xml {
         foreach ($quest->responses as $response) {
             if ($response->title === 'correct') {
                 foreach ($response->minvalue as $ansid => $minans) {
-                        $min = trim($minans);
-                        $max = trim($response->maxvalue[$ansid]);
-                        $ans = ($max + $min)/2;
-                        $tol = $max - $ans;
-                        if ($response->mark > 0)  {
-                            $question->fraction[] = match_grade_options($gradeoptionsfull, $response->mark / 100, 'nearest');
-                            $question->answer[] = $ans;
-                            $question->tolerance[]  = $tol;
-                            if (isset($response->feedback)) {
-                                $question->feedback[] = $this->process_answer_feedback($quest, $response->feedback);
-                            } else {
-                                $question->feedback[] = $this->cleaned_text_field('');
-                            }
+                    $min = trim($minans);
+                    $max = trim($response->maxvalue[$ansid]);
+                    $ans = ($max + $min) / 2;
+                    $tol = $max - $ans;
+                    if ($response->mark > 0) {
+                        $question->fraction[] = match_grade_options($gradeoptionsfull, $response->mark / 100, 'nearest');
+                        $question->answer[] = $ans;
+                        $question->tolerance[]  = $tol;
+                        if (isset($response->feedback)) {
+                            $question->feedback[] = $this->process_answer_feedback($quest, $response->feedback);
+                        } else {
+                            $question->feedback[] = $this->cleaned_text_field('');
                         }
+                    }
                 }
             }
         }
         $questions[] = $question;
+    }
+    
+    public function process_calculated($quest, &$questions) {
+        $question = $this->process_common($quest);
+        echo "<hr /><p><b>Calculated question skipped: </b>. ".$this->format_question_text($question)."</p>";
     }
 }
