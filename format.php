@@ -99,6 +99,9 @@ class qformat_canvas extends qformat_based_on_xml {
                 case 'fill_in_multiple_blanks_question':
                     $this->process_multiple($rawquestion, $questions, $rawquestion->qtype);
                     break;
+                case 'numerical_question':
+                    $this->process_num($rawquestion, $questions);
+                    break;
                 case 'text_only_question':
                     $this->process_description($rawquestion, $questions);
                     break;
@@ -179,6 +182,8 @@ class qformat_canvas extends qformat_based_on_xml {
                 case 'short_answer_question':
                     // TODO process response_str tag if necessary.
                     break;
+                case 'numerical_question':
+                    break;
                 case 'file_upload_question':
                 case 'essay_question':
                 case 'text_only_question':
@@ -209,6 +214,8 @@ class qformat_canvas extends qformat_based_on_xml {
             $responses = array();
             if ($rawquestion->qtype == 'matching_question') {
                 $this->process_matching_responses($respconditions, $responses);
+            } else if ($rawquestion->qtype =='numerical_question') {
+                $this->process_num_responses($respconditions, $responses);
             } else {
                 $this->process_responses($respconditions, $responses);
             }
@@ -393,7 +400,7 @@ class qformat_canvas extends qformat_based_on_xml {
     /**
      * Preprocess XML blocks containing data for responses processing.
      * Called by {@link create_raw_question()}
-     * for all questions types except matching.
+     * for all questions types except matching and numerical.
      * @param array $bbresponses XML block to parse
      * @param array $responses array of responses suitable for a rawquestion.
      */
@@ -444,13 +451,95 @@ class qformat_canvas extends qformat_based_on_xml {
                             } else {
                                 $response->respident[] = '';
                             }
-                        }  
+                        }
                     } else {
                         $response->ident[] = $this->getpath($rs, array('#', 'varequal', 0, '#'), '', true);
                     }
                     if ($this->getpath($rs, array('#', 'varequal', 0, '@', 'respident'), false, false)) {
                         $response->respident = $this->getpath($rs,
                                 array('#', 'varequal', 0, '@', 'respident'), '', true);
+                    }
+                }
+
+            }
+            if ($this->getpath($bbresponse,
+                    array('#', 'displayfeedback', 0, '@', 'linkrefid'), false, false)) {
+                $response->feedback = $this->getpath($bbresponse,
+                        array('#', 'displayfeedback', 0, '@', 'linkrefid'), '', true);
+            }
+
+            // Determine what mark to give to this response.
+            if ($this->getpath($bbresponse,
+                    array('#', 'setvar', 0, '#'), false, false)) {
+                $response->mark = (float)$this->getpath($bbresponse,
+                        array('#', 'setvar', 0, '#'), '', true);
+                if ($response->mark > 0.0) {
+                    $response->title = 'correct';
+                } else {
+                    $response->title = 'incorrect';
+                }
+            }
+            $responses[] = $response;
+        }
+    }
+
+    /**
+     * Preprocess XML blocks containing data for responses processing.
+     * Called by {@link create_raw_question()}
+     * for numerical questions type.
+     * @param array $bbresponses XML block to parse
+     * @param array $responses array of responses suitable for a rawquestion.
+     */
+    protected function process_num_responses($bbresponses, &$responses) {
+        foreach ($bbresponses as $bbresponse) {
+            $response = new stdClass();
+            if ($this->getpath($bbresponse,
+                    array('@', 'title'), '', true)) {
+                $response->title = $this->getpath($bbresponse,
+                        array('@', 'title'), '', true);
+            } else {
+                $response->title = $this->getpath($bbresponse,
+                        array('#', 'displayfeedback', 0, '@', 'linkrefid'), '', true);
+            }
+
+            $response->value = array();
+            $response->minvalue = array();
+            $response->maxvalue = array();
+            if ($this->getpath($bbresponse,
+                    array('#', 'conditionvar', 0, '#', 'other', 0, '#'), false, false)) {
+                $response->ident = $this->getpath($bbresponse,
+                        array('#', 'conditionvar', 0, '#', 'other', 0, '#'), '', true);
+            } else if ($this->getpath($bbresponse,
+                    array('#', 'conditionvar', 0, '#', 'or'), false, false)) {
+                $responseset = $this->getpath($bbresponse,
+                    array('#', 'conditionvar', 0, '#', 'or', 0, '#'), array(), false);
+                foreach ($responseset as $rsid => $rs) {
+                    if ($rsid === 'varequal') {
+                        if (is_array($rs)) {
+                            foreach ($rs as $resp) {
+                                $response->value[] = $this->getpath($resp, array('#'), '', true);
+                            }
+                        }
+                    } else if ($rsid === 'and') {
+                        $limits = $this->getpath($rs,
+                                array(0, '#'), array(), false);
+                        foreach ($limits as $limitop => $limit) {
+                            if ($limitop === 'varlte') {
+                                 $response->maxvalue[] = $this->getpath($limit, array(0, '#'), '', true);
+                            } else if ($limitop === 'vargte') {
+                                 $response->minvalue[] = $this->getpath($limit, array(0, '#'), '', true);
+                            }
+                        }
+                    }
+                }
+            } else {
+                $responseset = $this->getpath($bbresponse,
+                        array('#', 'conditionvar', 0, '#'), array(), false);
+                foreach ($responseset as $rsid => $rs) {
+                    if ($rsid === 'varlte') {
+                         $response->maxvalue[] = $this->getpath($rs, array(0, '#'), '', true);
+                    } else if ($rsid === 'vargte') {
+                         $response->minvalue[] = $this->getpath($rs, array(0, '#'), '', true);
                     }
                 }
 
@@ -550,6 +639,14 @@ class qformat_canvas extends qformat_based_on_xml {
         }
     }
 
+    protected function process_answer_feedback($quest, $ident) {
+        if (isset($quest->feedback[$ident])) {
+            return $this->cleaned_text_field($quest->feedback[$ident]->text);
+        } else {
+            return $this->cleaned_text_field('');
+        }
+    }
+
     /**
      * Process a multichoice singke answer question
      * Parse a multichoice single answer rawquestion and add the result
@@ -586,11 +683,7 @@ class qformat_canvas extends qformat_based_on_xml {
                 // Wrong answer.
                 $question->fraction[$i] = 0;
             }
-            if (isset($quest->feedback[$choice->ident .'_fb'])) {
-                $question->feedback[$i] = $this->cleaned_text_field($quest->feedback[$choice->ident .'_fb']->text);
-            } else {
-                $question->feedback[$i] = $this->cleaned_text_field('');
-            }
+            $question->feedback[$i] = $this->process_answer_feedback($quest, $choice->ident .'_fb');
             $i++;
         }
         $questions[] = $question;
@@ -634,11 +727,7 @@ class qformat_canvas extends qformat_based_on_xml {
                 // Wrong answer.
                 $question->fraction[$i] = 0;
             }
-            if (isset($quest->feedback[$choice->ident .'_fb'])) {
-                $question->feedback[$i] = $this->cleaned_text_field($quest->feedback[$choice->ident .'_fb']->text);
-            } else {
-                $question->feedback[$i] = $this->cleaned_text_field('');
-            }
+            $question->feedback[$i] = $this->process_answer_feedback($quest, $choice->ident .'_fb');
             $i++;
         }
         $questions[] = $question;
@@ -683,7 +772,7 @@ class qformat_canvas extends qformat_based_on_xml {
 
                         foreach ($answers as $aid => $ans) {
                             if ($ans === $correctresponse) {
-                                $feedbacks[$aid] = $this->cleaned_text_field($quest->feedback[$response->title]->text);
+                                $feedbacks[$aid] = $this->process_answer_feedback($quest, $response->title);
                             }
                         }
                     }
@@ -858,12 +947,12 @@ class qformat_canvas extends qformat_based_on_xml {
 
         if ($correct) {  // True is correct.
             $question->answer = 1;
-            $question->feedbacktrue = $this->cleaned_text_field($quest->feedback->{$correctresponseid .'_fb'});
-            $question->feedbackfalse = $this->cleaned_text_field($quest->feedback->{$incorrectresponseid .'_fb'});
+            $question->feedbacktrue = $this->process_answer_feedback($quest, $correctresponseid .'_fb');
+            $question->feedbackfalse = $this->process_answer_feedback($quest, $incorrectresponseid .'_fb');
         } else {  // False is correct.
             $question->answer = 0;
-            $question->feedbacktrue = $this->cleaned_text_field($quest->feedback[$incorrectresponseid .'_fb']->text);
-            $question->feedbackfalse = $this->cleaned_text_field($quest->feedback[$correctresponseid .'_fb']->text);
+            $question->feedbacktrue = $this->process_answer_feedback($quest, $incorrectresponseid .'_fb');
+            $question->feedbackfalse = $this->process_answer_feedback($quest, $correctresponseid .'_fb');
         }
         $question->correctanswer = $question->answer;
         $questions[] = $question;
@@ -907,11 +996,14 @@ class qformat_canvas extends qformat_based_on_xml {
         }
         $subqtext = array();
         foreach ($choices as $cid => $choice) {
-            if (in_array($cid, $correctanswer)) {
+            // I think that for fill_in_multiple_blanks_question all answers are
+            // correct despite what the XML file says.
+            if (in_array($cid, $correctanswer) || $subqtype =='fill_in_multiple_blanks_question') {
                 $prefix = '%100%';
             } else {
                 $prefix = '';
             }
+            // TODO add the feedback if it exists.
             $subqtext[] = $prefix . $this->escape_text($choice->text);
         }
         switch($subqtype) {
@@ -957,6 +1049,41 @@ class qformat_canvas extends qformat_based_on_xml {
         $question->length = 1;
         $question->penalty = 0.3333333;
 
+        $questions[] = $question;
+    }
+
+    public function process_num($quest, &$questions) {
+        $gradeoptionsfull = question_bank::fraction_options_full();
+        $question = $this->process_common($quest);
+
+        $question->qtype = 'numerical';
+
+        $this->process_qfeedbacks($quest, $question, false);
+
+        $answers = array();
+        $fractions = array();
+        $feedbacks = array();
+        // Find the correct answers.
+        foreach ($quest->responses as $response) {
+            if ($response->title === 'correct') {
+                foreach ($response->minvalue as $ansid => $minans) {
+                        $min = trim($minans);
+                        $max = trim($response->maxvalue[$ansid]);
+                        $ans = ($max + $min)/2;
+                        $tol = $max - $ans;
+                        if ($response->mark > 0)  {
+                            $question->fraction[] = match_grade_options($gradeoptionsfull, $response->mark / 100, 'nearest');
+                            $question->answer[] = $ans;
+                            $question->tolerance[]  = $tol;
+                            if (isset($response->feedback)) {
+                                $question->feedback[] = $this->process_answer_feedback($quest, $response->feedback);
+                            } else {
+                                $question->feedback[] = $this->cleaned_text_field('');
+                            }
+                        }
+                }
+            }
+        }
         $questions[] = $question;
     }
 }
