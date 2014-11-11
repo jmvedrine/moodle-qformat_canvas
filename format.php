@@ -722,7 +722,8 @@ class qformat_canvas extends qformat_based_on_xml {
             $question->answer[$i] = $this->cleaned_text_field(trim($choice->text));
             if (array_key_exists($choice->ident, $correctanswers)) {
                 // Correct answer.
-                $question->fraction[$i] = match_grade_options($gradeoptionsfull, $correctanswers[$choice->ident] / $correctanswersum, 'nearest');
+                $question->fraction[$i] =
+                        match_grade_options($gradeoptionsfull, $correctanswers[$choice->ident] / $correctanswersum, 'nearest');
             } else {
                 // Wrong answer.
                 $question->fraction[$i] = 0;
@@ -1086,7 +1087,7 @@ class qformat_canvas extends qformat_based_on_xml {
         }
         $questions[] = $question;
     }
-    
+
     public function process_calculated($quest, &$questions) {
         $question = $this->process_common($quest);
         echo "<hr /><p><b>Calculated question skipped: </b>. ".$this->format_question_text($question)."</p>";
