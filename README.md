@@ -4,11 +4,11 @@ This Moodle question import format can import questions exported from the Canvas
 
 It was created by Jean-Michel Vedrine.
 ##Installation
-To install, either download the zip file, unzip it, and place it in the directory moodle\question\format. (You will need to rename the directory from "moodle-qformat_fronter" to just "fronter".)
+To install, either download the zip file, unzip it, and place it in the moodle/question/format directory. (You will need to rename the directory from "moodle-qformat_canvas" to just "canvas".)
 
 Alternatively, get the code using git by running the following command in the top level folder of your Moodle install:
 
-git clone git://github.com/jmvedrine/moodle-qformat_fronter.git question/format/fronter
+git clone git://github.com/jmvedrine/moodle-qformat_canvas.git question/format/canvas
 
 You must visit Site administration and install it like any other Moodle plugin.
 
