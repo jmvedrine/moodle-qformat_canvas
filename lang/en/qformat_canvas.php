@@ -29,4 +29,5 @@ $string['importedcategory'] = 'Imported category {$a}';
 $string['notenoughtsubans'] = 'Unable to import matching question \'{$a}\' because a matching question must comprise at least two questions and three answers.';
 $string['pluginname'] = 'Canvas';
 $string['pluginname_help'] = 'Canvas format enables questions saved in canvas XML QTI to be imported via an xml file.';
+$string['privacy:metadata'] = 'The Canvas question format plugin does not store any personal data.';
 $string['unhandledpresblock'] = 'Unhandled presentation block';

@@ -15,17 +15,32 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version information for the canvas question import format.
+ * Privacy Subsystem implementation for qformat_canvas.
  *
  * @package    qformat_canvas
- * @copyright  2014 Jean-Michel Vedrine
+ * @copyright  2018 Jean-Michel Vedrine
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace qformat_canvas\privacy;
+
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'qformat_canvas';
-$plugin->version   = 2018050100;
-$plugin->requires  = 2013050100;
-$plugin->release   = '1.03';
-$plugin->maturity  = MATURITY_ALPHA;
+/**
+ * Privacy Subsystem for qformat_canvas implementing null_provider.
+ *
+ * @copyright  2018 Jean-Michel Vedrine
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class provider implements \core_privacy\local\metadata\null_provider {
+
+    /**
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return  string
+     */
+    public static function get_reason() : string {
+        return 'privacy:metadata';
+    }
+}
