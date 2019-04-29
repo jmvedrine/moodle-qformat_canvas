@@ -31,7 +31,6 @@ require_once($CFG->dirroot . '/question/format.php');
 require_once($CFG->dirroot . '/question/format/canvas/format.php');
 require_once($CFG->dirroot . '/question/engine/tests/helpers.php');
 
-
 /**
  * Unit tests for the Canvas question importer.
  *
@@ -45,7 +44,6 @@ class qformat_canvas_test extends question_testcase {
 
         $importer = new qformat_canvas();
         $qs = $importer->readquestions($lines);
-
 
         $this->assertEquals(1, count($qs));
     }
