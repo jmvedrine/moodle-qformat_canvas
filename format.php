@@ -50,7 +50,7 @@ class qformat_canvas extends qformat_based_on_xml {
      * @param $lines array of lines from the input file.
      * @return array (of objects) questions objects.
      */
-    protected function readquestions($lines) {
+    public function readquestions($lines) {
         question_bank::get_qtype('multianswer'); // Ensure the multianswer code is loaded.
         $text = implode($lines, ' ');
         unset($lines);
