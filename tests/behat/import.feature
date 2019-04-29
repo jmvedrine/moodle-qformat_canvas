@@ -24,8 +24,7 @@ Feature: Test importing questions from Canvas XML format.
     And I upload "question/format/canvas/tests/fixtures/canvas_matching_question.xml" file to "Import" filemanager
     And I press "id_submitbutton"
     Then I should see "Parsing questions from import file."
-    And I should see "Importing 2 questions from file"
-    And I should see "What color is an elephant?"
-    And I should see "What happens when it rains?"
+    And I should see "Importing 1 questions from file"
+    And I should see "Note the infinitive phrase.  Tell its function."
     When I press "Continue"
-    Then I should see "What color is an elephant"
+    Then I should see "Sample matching question"
