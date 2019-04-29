@@ -25,6 +25,6 @@ Feature: Test importing questions from Canvas XML format.
     And I press "id_submitbutton"
     Then I should see "Parsing questions from import file."
     And I should see "Importing 1 questions from file"
-    And I should see "Note the infinitive phrase.  Tell its function."
+    And I should see "Note the infinitive phrase."
     When I press "Continue"
     Then I should see "Sample matching question"
