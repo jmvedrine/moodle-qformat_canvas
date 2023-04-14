@@ -52,7 +52,7 @@ class qformat_canvas extends qformat_based_on_xml {
      */
     public function readquestions($lines) {
         question_bank::get_qtype('multianswer'); // Ensure the multianswer code is loaded.
-        $text = implode($lines, ' ');
+        $text = implode(' ', $lines);
         unset($lines);
         // This converts xml to big nasty data structure,
         // the 0 means keep white space as it is.
